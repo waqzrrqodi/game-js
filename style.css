@@ -1,216 +1,53 @@
-/* Path: style.css */
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap");
 
-h1 {
-  color: #fff;
-}
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Prevent scrollbars */
+    font-family: 'Roboto', sans-serif;
+  }
 
 body {
-  background-color: #3d3d3d;
-  font-family: 'Changa One', cursive;
-  display: flex;
-  flex-direction: row;
+    margin: 0;
+    padding: 0;
+    background-color: #000;
+    overflow: hidden;
 }
 
-#game-view{
-  display: flex;
-  flex-direction: row;
-  max-height: 768px;
+#game-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    overflow: hidden;
 }
 
-#game-container{
-  position: relative;
-  display: inline-block;
+#canvas{
+    display: block;
+    background-color: #000;
 }
 
-#game-over{
-  position: absolute;
-    top: 0;
-    bottom: 10vh;
-    left: 0;
-    right: 0;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    font-size: 72px;
+#scoreDiv {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
     color: white;
-    -webkit-text-stroke: 3px black;
-}
+  }
 
-#score-container{
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 400px;
-  height: 80px;
-  background: linear-gradient(
-    to left bottom,
-    rgba(0, 0, 0, 0.8),
-    rgba(0, 0, 0, 0),
-    rgba(0, 0, 0, 0)
-  );
-}
+.gameOverDiv {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(30, 29, 46, 0.671);
+    border-radius: 10px;
+    color: #ffffffd0;
+    padding: 20px;
+    text-align: center;
+  }
 
-#score{
-  position: absolute;
-  top: 4px;
-  right: 8px;
-  font-size: 36px;
-  color: white;
-  -webkit-text-stroke: 2px black;
-  display: flex;
-  align-items: center;
+.hidden {
+    display: none;
 }
-
-#buildButtons-container{
-  margin-left: 50px;
-}
-
-#buildButtons-container p {
-  color: #fff;
-  font-size: 20px;
-  font-family: 'Press Start 2P', cursive;
-  margin: 0;
-}
-
-.chosen-building{
-  background-color: green;
-}
-
-#badbuild{
-  color: #fff;
-  font-size: 20px;
-  font-family: 'Press Start 2P', cursive;
-  border: 2px solid #fff;
-  border-radius: 5px;
-  padding: 10px;
-  margin: 10px;
-  text-align: center;
-}
-
-#badbuild-button{
-  background-color: #ffffff;
-  border-radius: 10px;
-  padding: 2vh 2vw;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
-  margin: 1vh 1vw;
-  cursor: pointer;
-}
-
-#mediumbuild{
-  color: #fff;
-  font-size: 20px;
-  font-family: 'Press Start 2P', cursive;
-  border: 2px solid #fff;
-  border-radius: 5px;
-  padding: 10px;
-  margin: 10px;
-  text-align: center;
-}
-
-#mediumbuild-button{
-  background-color: #ffffff;
-  border-radius: 10px;
-  padding: 2vh 2vw;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
-  margin: 1vh 1vw;
-  cursor: pointer;
-}
-
-#goodbuild{
-  color: #fff;
-  font-size: 20px;
-  font-family: 'Press Start 2P', cursive;
-  border: 2px solid #fff;
-  border-radius: 5px;
-  padding: 10px;
-  margin: 10px;
-  text-align: center;
-}
-
-#goodbuild-button{
-  background-color: #ffffff;
-  border-radius: 10px;
-  padding: 2vh 2vw;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
-  margin: 1vh 1vw;
-  cursor: pointer;
-}
-
-#playorpausewave{
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-}
-
-#wave {
-  color: #fff;
-  font-size: 20px;
-  font-family: 'Press Start 2P', cursive;
-  margin: 0;
-}
-
-#start{
-  background-color: #3d3d3d;
-  color: #fff;
-  font-size: 20px;
-  font-family: 'Press Start 2P', cursive;
-  border: 2px solid #fff;
-  border-radius: 5px;
-  padding: 10px;
-  margin: 10px;
-  cursor: pointer;
-}
-
-#pause{
-  background-color: #3d3d3d;
-  color: #fff;
-  font-size: 20px;
-  font-family: 'Press Start 2P', cursive;
-  border: 2px solid #fff;
-  border-radius: 5px;
-  padding: 10px;
-  margin: 10px;
-  cursor: pointer;
-}
-
-#reset{
-  background-color: #3d3d3d;
-  color: #fff;
-  font-size: 20px;
-  font-family: 'Press Start 2P', cursive;
-  border: 2px solid #fff;
-  border-radius: 5px;
-  padding: 10px;
-  margin: 10px;
-  cursor: pointer;
-}
-
-#canvas {
-  background-color: #3d3d3d;
-  border-bottom: 2px solid #fff;
-  border-radius: 5px;
-  margin-bottom: 10px;
-  top: 0;
-  left: 0;
-}
-
-#coins-container{
-  display: flex;
-  align-items: center;
-  margin-right: 20px;
-}
-
-#coins{
-  margin-right: 5px;
-}
-
-img {
-  width: 30px;
-  height: 30px;
-}
-
-#heart-container{
-  display: flex;
-  align-items: center;
-}
-

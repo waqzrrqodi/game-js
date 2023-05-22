@@ -1,71 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tower game 2042</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Changa+One&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="style.css"/>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link  href="style.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+    <title>Garrgebara</title>
 </head>
 <body>
-
-<div id="game-container">
-  <canvas id="canvas"></canvas>
-  <div id="game-over">
-    GAME OVER
-  </div>
-  <div id="score-container"></div>
-  <div id="score">
-    <!-- coins -->
-    <div id="coins-container">
-      <img src="svg/coin.svg" alt="Coins">
-      <div id="coins">60</div>
+    <div id="game-container">
+        <canvas id="canvas"></canvas>
+        <div class="gameOverDiv hidden">
+            <h1>Game Over</h1>
+            <h2>Score: <span id="score"></span></h2>
+            <h3 id="restart">To restart press F5</h3>
+        </div>
+        <div id="scoreDiv">
+            <h1>Score: <span id="scoreSpan">0</span></h1>
+        </div>
     </div>
-    <!-- hearts -->
-    <div id="heart-container">
-      <img src="svg/heart.svg" alt="Hearts">
-      <div id="hearts">10</div>
-    </div>
-  </div>
-  <div id="playorpausewave">
-    <button id="start" onclick="">Start</button>
-    <button id="reset" onclick="">Reset</button>
-    <!-- Wave indicator-->
-      <div id="wave"><p>Wave: 1</p></div>
-  </div>
-</div>
-<div id="buildButtons-container">
-  <div id="badbuild">
-    <button id="badbuild-button">Bad building</button>
-    <p>Cost: <span id="badbuild-cost">30</span></p>
-    <p>Damage: <span id="badbuild-damage">10</span></p>
-    <p>Range: <span id="badbuild-range">150</span></p>
-  </div>
-  <div id="mediumbuild">
-    <button id="mediumbuild-button">Medium building</button>
-    <p>Cost: <span id="mediumbuild-cost">60</span></p>
-    <p>Damage: <span id="mediumbuild-damage">20</span></p>
-    <p>Range: <span id="mediumbuild-range">200</span></p>
-  </div>
-  <div id="goodbuild">
-    <button id="goodbuild-button">Good building</button>
-    <p>Cost: <span id="goodbuild-cost">150</span></p>
-    <p>Damage: <span id="goodbuild-damage">40</span></p>
-    <p>Range: <span id="goodbuild-range">250</span></p>
-  </div>
-</div>
-
-<script src="js/gameButtons.js"></script>
-<script src="js/placementTilesData.js"></script>
-<script src="js/waypoints.js"></script>
-<script src="js/classes/Sprite.js"></script>
-<script src="js/classes/Building.js"></script>
-<script src="js/classes/Enemy.js"></script>
-<script src="js/classes/PlacementTile.js"></script>
-<script src="js/classes/Projectile.js"></script>
-<script src="js/index.js"></script>
+    <!-- Scripts -->
+    <script src="js/classes/garbageHandler.js"></script>
+    <script src="js/classes/playerHandler.js"></script>
+    <script src="js/classes/planetHandler.js"></script>
+    <script src="js/game.js"></script>
 </body>
 </html>
