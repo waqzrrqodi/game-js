@@ -10,16 +10,27 @@
     <title>Garrgebara</title>
 </head>
 <body>
+    <div id="preGameScreen">
+        <h1>SPACE GAME</h1>
+        <p>Controls:</p>
+        <p><strong>W</strong> - Up</p>
+        <p><strong>A</strong> - Left</p>
+        <p><strong>S</strong> - Down</p>
+        <p><strong>D</strong> - Right</p>
+        <a href="#" class="button" onclick="startGame()">Start Game</a>
+        <p><strong>Highscore: </strong><span id="highscoreStartSpan">0</span></p>
+      </div>
     <div id="game-container">
         <canvas id="canvas"></canvas>
         <div class="gameOverDiv hidden">
             <h1>Game Over</h1>
             <h2>Score: <span id="score"></span></h2>
+            <h2> <span id="highscorePromt"></span></h2>
             <h3 id="restart">To restart press F5</h3>
         </div>
         <div id="scoreDiv">
             <h1>Score: <span id="scoreSpan">0</span></h1>
-            <h3>High score: <span id="highScoreSpan">0</span></h3>
+            <h3>Highscore: <span id="highScoreSpan">0</span></h3>
         </div>
     </div>
     <!-- Scripts -->

@@ -125,28 +125,31 @@ class Player {
       finalTotalY += ay;
 
       // Check if player is colliding with a planet and if so, stop the player from moving
+
       for (let i = 0; i < foregroundObjects.length; i++) {
         let planet = foregroundObjects[i];
-        if (
-          this.x + this.frameWidth * this.scale >= planet.x &&
-          this.x <= planet.x + planet.width &&
-          this.y + this.frameHeight * this.scale >= planet.y &&
-          this.y <= planet.y + planet.height
-        ) {
-          console.log("COLLISION");
+        // Assuming planetX and planetY are the coordinates of the top-left corner of the planet circle,
+        // and planetRadius is the radius of the planet circle.
+        const planetX = planet.x + (planet.frameWidth * planet.scale) / 2;
+        const planetY = planet.y + (planet.frameHeight * planet.scale) / 2;
+        const planetRadius =
+          (Math.max(planet.frameWidth, planet.frameHeight) * planet.scale) / 2;
+
+        const rectangleCenterX = this.x + (this.frameWidth * this.scale) / 2;
+        const rectangleCenterY = this.y + (this.frameHeight * this.scale) / 2;
+
+        const distanceX = Math.abs(rectangleCenterX - planetX);
+        const distanceY = Math.abs(rectangleCenterY - planetY);
+
+        const distanceSquared = distanceX ** 2 + distanceY ** 2;
+        const radiusSquared = planetRadius ** 2;
+
+        const isColliding = distanceSquared <= radiusSquared;
+
+        if (isColliding) {
+          gameOver();
         }
       }
-      // console.log(finalTotalX, finalTotalY);
-    }
-
-    // Checks if the player is affected strongly by the gravity of a planet meaning they are close to it and colliding with it
-    if (
-      finalTotalX > 10 ||
-      finalTotalX < -10 ||
-      finalTotalY > 10 ||
-      finalTotalY < -10
-    ) {
-      gameOver();
     }
 
     this.x += finalTotalX;

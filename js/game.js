@@ -3,6 +3,8 @@ const ctx = canvas.getContext("2d");
 const highScore = document.cookie;
 const highScoreSpan = document.getElementById("highScoreSpan")
 highScoreSpan.innerHTML = highScore
+const highscoreStartSpan = document.getElementById("highscoreStartSpan")
+highscoreStartSpan.innerHTML = document.cookie
 
 
 canvas.width = window.innerWidth;
@@ -12,19 +14,19 @@ let backgroundImage = new Image();
 backgroundImage.src = "img/spaceBackground.png";
 
 // Game variables
-let running = true;
+let running = false;
 let player = undefined;
 let garbage = [];
 let foregroundObjects = []; // Array of planet objects
 let MaxgarbageOnScreen = 10;
 let garbageOnScreen = 0;
 let garbageSpawnRate = 2000;
-let lastGarbageSpawn = -1;
+let lastGarbageSpawn = Date.now();
 let garbageSpeed = 1;
 let planetDefaultGravity = 0.1;
 let defaultPlanetSpawnRate = 2000;
 let maxPlanetSpawnRate = 750;
-let lastPlanetSpawn = -1;
+let lastPlanetSpawn = Date.now();
 let planetImages = [
   { src: "img/planet1.png", frameCount: 50, frameDuration: 40 },
   { src: "img/planet2.png", frameCount: 50, frameDuration: 40 },
@@ -102,6 +104,7 @@ Promise.all([
 function gameLoop() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   drawBackground();
+  backgroundSpeed = 5 + player.score / 100; // 5px of background movment per frame + 1px per 25 points
   backgroundX -= backgroundSpeed;
   if (backgroundX <= -canvas.width) {
     backgroundX = 0;
@@ -117,8 +120,10 @@ function gameLoop() {
   if (currentTime - lastPlanetSpawn > planetSpawnRate) {
     lastPlanetSpawn = currentTime;
     spawnPlanet();
+
   }
-  if (currentTime - lastGarbageSpawn > garbageSpawnRate) {
+  // else if a planet cannot spawn, spawn garbage if the last planet spawn was 500ms or more ago
+  else if (currentTime - lastPlanetSpawn > 500 && currentTime - lastGarbageSpawn > garbageSpawnRate) {
     lastGarbageSpawn = currentTime;
     spawnGarbage();
   }
@@ -201,6 +206,7 @@ function spawnGarbage() {
   let randomGarbage = Math.floor(Math.random() * garbageImages.length);
   let randomGarbageImage = new Image();
   randomGarbageImage = garbageImages[randomGarbage].image;
+  let randomHeight = getRandomHeight();
 
   // Create a new garbage object (Image, width, height, x, y, scale)
   let garbageObject = new Garbage(
@@ -208,7 +214,7 @@ function spawnGarbage() {
     16,
     16,
     canvas.width,
-    getRandomHeight(),
+    randomHeight,
     3
   );
   garbage.push(garbageObject);
@@ -235,7 +241,8 @@ player = new Player(
 
 // Background position tracking
 let backgroundX = 0;
-let backgroundSpeed = 5 + player.score / 25; // 5px of background movment per frame + 1px per 25 points
+let backgroundSpeed = 5;
+
 
 // Draw player
 function drawPlayer() {
@@ -256,7 +263,7 @@ function drawBackground() {
 function gameOver() {
   running = false;
   const gameOverScreen = document.querySelector(".gameOverDiv");
-  console.log(highScore)
+  const highscorePromt = document.getElementById("highscorePromt");
 
   const score = document.getElementById("score");
   // the score is a span which the score is written in
@@ -264,11 +271,21 @@ function gameOver() {
 
   // If score is higher than high score, make high score the score
   if (player.score > highScore) {
-    console.log(highScore);
-    console.log(player.score);
+    highscorePromt.innerHTML = "New Highscore!";
     document.cookie = player.score;
     highScoreSpan.innerHTML = player.score;
   };
 
   gameOverScreen.classList.remove("hidden");
+}
+
+function startGame() {
+  const gameOverScreen = document.querySelector(".gameOverDiv");
+  const pregameScreen = document.getElementById("preGameScreen");
+  gameOverScreen.classList.add("hidden");
+  // add none display to pregameScreen
+  pregameScreen.classList.add("hidden");
+  player.score = 0;
+  running = true;
+  requestAnimationFrame(gameLoop);
 }

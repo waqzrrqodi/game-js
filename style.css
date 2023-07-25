@@ -44,6 +44,39 @@ body {
     color: white;
   }
 
+#preGameScreen {
+    height: 100vh;
+    width: 100vw;
+    background-image: url("/img/startBackground.png");
+    background-size: 100vw;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
+    color: aliceblue;
+    font-size: 20px;
+}
+
+#preGameScreen h1 {
+    font-size: 50px;
+}
+
+#preGameScreen p {
+  margin: 1vh;
+}
+
+a.button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #4CAF50;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
+
 .gameOverDiv {
     position: absolute;
     top: 50%;
@@ -57,5 +90,5 @@ body {
   }
 
 .hidden {
-    display: none;
+    display: none !important;
 }
