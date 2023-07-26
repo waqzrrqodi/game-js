@@ -47,7 +47,6 @@ body {
 #preGameScreen {
     height: 100vh;
     width: 100vw;
-    background-image: url("img/startBackground.png");
     background-size: 100vw;
     background-position: center;
     display: flex;
@@ -57,6 +56,18 @@ body {
     font-family: 'Roboto', sans-serif;
     color: aliceblue;
     font-size: 20px;
+}
+
+@media screen and (max-width: 1920px) {
+  #preGameScreen{
+    background-image: url("img/startBackground_mq.png");
+  }
+}
+
+@media screen and (min-width: 1921px) {
+  #preGameScreen{
+    background-image: url("img/startBackground.png");
+  }
 }
 
 #preGameScreen h1 {
