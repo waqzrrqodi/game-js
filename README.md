@@ -4,7 +4,10 @@ Most modern game of the century
 10/10 👍💪🎆
 
 ---
-## How to run:
+## How to play:
+Either:
+Go to [Game site](https://waqzrrqodi.github.io/game-js/)
+or
 1. Download the latest files in the repo
 2. Click on the `index.html` file
 3. Enjoy the game
