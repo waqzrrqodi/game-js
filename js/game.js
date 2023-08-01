@@ -167,8 +167,8 @@ function spawnPlanet() {
   let randomIndex = Math.floor(Math.random() * planetImages.length);
   let randomPlanet = new Image();
   randomPlanet = planetImages[randomIndex];
-  // The scale of the planet is a random number between 0.6 and 5
-  let scale = Math.random() * (5 - 0.6) + 0.6;
+  // The scale of the planet is a random number between 0.6 and 1.5
+  let scale = Math.random() * (1.5 - 0.6) + 0.6;
 
   // Create a new planet object (Image, width, height, x, y, frameCount, frameDuration, gravity, scale)
   let planet = new Planet(
