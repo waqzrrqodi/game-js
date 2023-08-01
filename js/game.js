@@ -1,10 +1,13 @@
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
-const highScore = document.cookie;
+// const highScore = document.cookie;
+const highScore = localStorage.getItem("highscore");
 const highScoreSpan = document.getElementById("highScoreSpan")
-highScoreSpan.innerHTML = highScore
+// highScoreSpan.innerHTML = highScore
+highScoreSpan.innerHTML = localStorage.getItem("highscore")
 const highscoreStartSpan = document.getElementById("highscoreStartSpan")
-highscoreStartSpan.innerHTML = document.cookie
+// highscoreStartSpan.innerHTML = document.cookie
+highscoreStartSpan.innerHTML = localStorage.getItem("highscore")
 
 
 canvas.width = window.innerWidth;
@@ -272,7 +275,8 @@ function gameOver() {
   // If score is higher than high score, make high score the score
   if (player.score > highScore) {
     highscorePromt.innerHTML = "New Highscore!";
-    document.cookie = player.score;
+    // document.cookie = player.score;
+    localStorage.setItem("highscore", player.score);
     highScoreSpan.innerHTML = player.score;
   };
 
