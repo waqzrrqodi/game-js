@@ -58,6 +58,30 @@ body {
     font-size: 20px;
 }
 
+.credits {
+    position: absolute;
+    bottom: 20px;
+    right: 5px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    color: white;
+  }
+
+  .creditsName {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    color: white;
+  }
+
+  .copyRight {
+    position: absolute;
+    bottom: 1px;
+    right: 5px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    color: white;
+  }
+
 @media screen and (max-width: 1920px) {
   #preGameScreen{
     background-image: url("img/startBackground_mq.png");
